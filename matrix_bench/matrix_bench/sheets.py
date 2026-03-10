@@ -29,12 +29,11 @@ class SheetExporter:
         # Prepare rows to append
         row = [datetime.datetime.now(datetime.timezone.utc).isoformat(), self.isu_id, benchmark_results[0]["Method"], benchmark_results[0]["Comment"]]
         for res_id in range(len(benchmark_results)):
-            row.append()
             row.append(benchmark_results[res_id]["Test Type"])
             row.append(benchmark_results[res_id]["Best Time (s)"])
             row.append(benchmark_results[res_id]["Avg Time (s)"])
             row.append(benchmark_results[res_id]["Peak Memory (MB)"])
             
         # Append all rows in a single API call
-        sheet.append_rows(row)
+        sheet.append_row(row)
         print(f"The row was successfully appended to Google Sheets.")
